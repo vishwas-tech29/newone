@@ -10,11 +10,13 @@ import OnlinePresence from "./components/home/online-presence";
 import Solutions from "./components/home/solution";
 import Subscription from "./components/home/subscription";
 import WebResult from "./components/home/web-result";
+import { WorldMapDemo } from "./components/world";
+import {apple-card-Caroimport { Carousel } from "@/components/ui/apple-cards-carousel";
+usell } from "@/hooks/use-outside-click";
 
 export const metadata: Metadata = {
-    title: "Home | Awake Agency",
+  title: "Home | Nuerika",
 };
-
 
 export default function Home() {
   return (
@@ -34,6 +36,15 @@ export default function Home() {
       {/* ---------------------Innovation section Starts-----------------  */}
       <Innovation />
       {/* ---------------------Innovation section Ends-----------------  */}
+
+      {/* ---------------------World map section Starts-----------------  */}
+      <WorldMapDemo />
+      {/* If you want to render WorldMap directly, use this: */}
+      {/* <WorldMap /> */}
+      <Carousel />
+      <useOutsideClick />
+      
+      {/* ---------------------World map section Ends-----------------  */}
 
       {/* ---------------------Online presence section Starts-----------------  */}
       <OnlinePresence />
@@ -63,5 +74,5 @@ export default function Home() {
       <Solutions />
       {/* ---------------------Solutions section Ends-----------------  */}
     </main>
-  )
+  );
 }
