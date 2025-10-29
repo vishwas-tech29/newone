@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 
 const footerData = {
     brand: {
-        name: "Awake",
+        name: "Nuerika",
         tagline: "Empowering businesses with innovative solutions. Let's create something amazing together.",
         socialLinks: [
             {
@@ -48,11 +48,11 @@ const footerData = {
     },
     contactDetails: {
         name:"Contact Details",
-        address: "81 Rivington Street London EC2A 3AY",
-        email: "hello@awake.agency",
+        address: "#",
+        email: "nuerika7@gmail.com",
         phone: "0105 192 3556"
     },
-    copyright: "©2025 Awake. All Rights Reserved"
+    copyright: "©2025 Nuerika. All Rights Reserved"
 };
 
 export const GET = async () => {

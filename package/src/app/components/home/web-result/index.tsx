@@ -63,7 +63,7 @@ function WebResult() {
               <div className='relative 2xl:px-24 px-16 md:py-8 py-4'>
                 <h2 ref={ref} className='2xl:text-9xl md:text-7xl text-5xl'>
                   <sup>+</sup>
-                  {inView ? <CountUp start={0} end={40} duration={3} /> : '0'}
+                  {inView ? <CountUp start={0} end={5} duration={3} /> : '0'}
                 </h2>
                 <p className='mt-2 text-dark_black/60 dark:text-white/60'>
                   Total Projects Completed
@@ -73,7 +73,7 @@ function WebResult() {
               <div className='relative 2xl:px-24 px-16 md:py-8 py-4'>
                 <h2 className='2xl:text-9xl md:text-7xl text-5xl'>
                   <sup>+</sup>
-                  {inView ? <CountUp start={0} end={15} duration={3} /> : '0'}
+                  {inView ? <CountUp start={0} end={1} duration={3} /> : '0'}
                 </h2>
                 <p className='mt-2 text-dark_black/60 dark:text-white/60'>
                   Years of Experience
@@ -83,10 +83,10 @@ function WebResult() {
               <div className='relative 2xl:px-24 px-16 md:py-8 py-4'>
                 <h2 className='2xl:text-9xl md:text-7xl text-5xl'>
                   <sup>+</sup>
-                  {inView ? <CountUp start={0} end={12} duration={3} /> : '0'}
+                  {inView ? <CountUp start={0} end={4} duration={3} /> : '0'}
                 </h2>
                 <p className='mt-2 text-dark_black/60 dark:text-white/60'>
-                  Design Awards
+                  Trusted Clients
                 </p>
               </div>
             </div>
