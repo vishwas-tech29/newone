@@ -12,13 +12,13 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang='en' suppressHydrationWarning>
-      <body>
+    <html lang='en' suppressHydrationWarning className='dark'>
+      <body className='bg-slate-900 text-white'>
         <SessionProvider>
           <ThemeProvider
             attribute='class'
             enableSystem={false}
-            defaultTheme='light'>
+            defaultTheme='dark'>
             {/* ---------------------Header Starts-----------------  */}
             <Header />
             {/* ---------------------Header Ends-------------------  */}

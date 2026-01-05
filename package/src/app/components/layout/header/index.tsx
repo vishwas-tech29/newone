@@ -1,139 +1,101 @@
 'use client'
+
 import Link from 'next/link'
-import { useEffect, useState } from 'react'
-import { Icon } from '@iconify/react/dist/iconify.js'
-import { usePathname } from 'next/navigation'
-import HeaderLink from './Navigation/HeaderLink'
-import { headerData } from './Navigation/Menudata'
-import Logo from './Logo'
-import MobileHeader from './Navigation/MobileHeader'
-import ThemeToggler from './ThemeToggle'
+import { useState } from 'react'
 
-const Header = () => {
-  const [sidebarOpen, setSidebarOpen] = useState(false)
-  const [sticky, setSticky] = useState(false)
-  const pathname = usePathname()
+export default function Header() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
-  const handleScroll = () => {
-    setSticky(window.scrollY >= 80)
-  }
-
-  useEffect(() => {
-    window.addEventListener('scroll', handleScroll)
-    return () => {
-      window.removeEventListener('scroll', handleScroll)
-    }
-  }, [pathname])
+  const navItems = [
+    { label: 'Services', href: '#services' },
+    { label: 'Work', href: '#work' },
+    { label: 'About', href: '#about' },
+    { label: 'Contact', href: '#contact' },
+  ]
 
   return (
-    <>
-      <header className="fixed top-0 z-50 w-full">
-        <div className="container p-3">
-          <nav
-            className={`flex items-center py-3 px-4 justify-between ${
-              sticky ? 'rounded-full shadow-sm bg-white dark:bg-dark_black' : ''
-            }`}>
-            {/* Logo */}
-            <div className="flex items-center">
-              <Logo />
+    <header className="fixed top-0 w-full z-50 bg-slate-900/80 backdrop-blur-md border-b border-slate-800/50">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-16">
+          {/* Logo */}
+          <Link href="/" className="flex items-center gap-2">
+            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
+              <span className="text-white font-bold text-lg">∿</span>
             </div>
+            <span className="font-bold text-white hidden sm:inline">
+              Nurika Labs
+            </span>
+          </Link>
 
-            {/* Desktop Menu */}
-            <div className="hidden lg:flex bg-dark_black/5 dark:bg-white/5 rounded-3xl py-3 px-1">
-              <ul className="flex gap-0 2xl:gap-1.5">
-                {headerData.map((item, index) => (
-                  <HeaderLink key={index} item={item} />
-                ))}
-              </ul>
-            </div>
-
-            {/* Right Side Buttons */}
-            <div className="flex items-center gap-1 xl:gap-4">
-              {/* Contact Button */}
+          {/* Desktop Navigation */}
+          <nav className="hidden md:flex items-center gap-8">
+            {navItems.map((item) => (
               <Link
-                href="/contact"
-                className="hidden lg:block bg-dark_black text-white dark:bg-white dark:text-dark_black px-4 py-2 rounded-full border border-dark_black hover:opacity-90 transition"
+                key={item.href}
+                href={item.href}
+                className="text-slate-300 hover:text-white transition-colors font-medium"
               >
-                Contact
+                {item.label}
               </Link>
-
-              {/* Theme Toggle */}
-              <ThemeToggler />
-
-              {/* Mobile Menu Button */}
-              <div className="hidden max-lg:flex">
-                <button onClick={() => setSidebarOpen(!sidebarOpen)}>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24">
-                    <path
-                      fill="none"
-                      stroke="currentColor"
-                      strokeLinecap="round"
-                      strokeMiterlimit="10"
-                      strokeWidth="1.5"
-                      d="M4.5 12h15m-15 5.77h15M4.5 6.23h15"
-                    />
-                  </svg>
-                </button>
-              </div>
-            </div>
+            ))}
           </nav>
-        </div>
 
-        {/* Mobile Sidebar */}
-        {sidebarOpen && (
-          <div
-            className="fixed top-0 left-0 w-full h-full bg-black/50 z-40"
-            onClick={() => setSidebarOpen(false)}
-          />
-        )}
-        <div
-          className={`lg:hidden fixed top-0 right-0 h-full w-full bg-white dark:bg-dark_black shadow-lg transform transition-transform duration-300 max-w-xs ${
-            sidebarOpen ? 'translate-x-0' : 'translate-x-full'
-          } z-50`}>
-          <div className="flex items-center justify-between p-4">
-            <h2 className="text-lg font-bold">Menu</h2>
+          {/* CTA Button */}
+          <div className="flex items-center gap-4">
+            <Link
+              href="#contact"
+              className="hidden sm:inline-flex px-6 py-2 rounded-lg bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600 text-white font-semibold transition-all duration-300 text-sm"
+            >
+              Get Started
+            </Link>
+
+            {/* Mobile Menu Toggle */}
             <button
-              onClick={() => setSidebarOpen(false)}
-              aria-label="Close mobile menu">
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="md:hidden p-2 text-slate-300 hover:text-white transition-colors"
+            >
               <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24">
-                <path
-                  fill="none"
-                  stroke="currentColor"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M6 18L18 6M6 6l12 12"
-                />
+                className="w-6 h-6"
+                fill="none"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                {mobileMenuOpen ? (
+                  <path d="M6 18L18 6M6 6l12 12"></path>
+                ) : (
+                  <path d="M4 6h16M4 12h16M4 18h16"></path>
+                )}
               </svg>
             </button>
           </div>
-          <div className="p-4">
-            <ul className="flex flex-col">
-              {headerData.map((item, index) => (
-                <MobileHeader key={index} item={item} />
-              ))}
-
-              {/* Contact Button for Mobile */}
-              <Link
-                href="/contact"
-                className="mt-4 w-full bg-dark_black text-white dark:bg-white dark:text-dark_black px-4 py-2 rounded-md hover:opacity-90 text-center"
-              >
-                Contact
-              </Link>
-            </ul>
-          </div>
         </div>
-      </header>
-    </>
+
+        {/* Mobile Navigation */}
+        {mobileMenuOpen && (
+          <div className="md:hidden pb-4 space-y-2">
+            {navItems.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                onClick={() => setMobileMenuOpen(false)}
+                className="block px-4 py-2 text-slate-300 hover:text-white hover:bg-slate-800/50 rounded-lg transition-colors"
+              >
+                {item.label}
+              </Link>
+            ))}
+            <Link
+              href="#contact"
+              className="block px-4 py-2 rounded-lg bg-gradient-to-r from-blue-600 to-blue-500 text-white font-semibold text-center mt-4"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Get Started
+            </Link>
+          </div>
+        )}
+      </div>
+    </header>
   )
 }
-
-export default Header

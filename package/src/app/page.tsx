@@ -1,74 +1,29 @@
 import { Metadata } from "next";
-import Achievements from "./components/home/achievements";
-import Brand from "./components/home/brand";
-import CreativeMind from "./components/home/creative-mind";
-import CustomerStories from "./components/home/customer-stories";
-import Faq from "./components/home/faq";
-import HeroSection from "./components/home/hero";
-import Innovation from "./components/home/innovation";
-import OnlinePresence from "./components/home/online-presence";
-import Solutions from "./components/home/solution";
-import Subscription from "./components/home/subscription";
-import WebResult from "./components/home/web-result";
-// import { WorldMapDemo } from "./components/world";
-// import {apple-card-Caroimport { Carousel } from "@/components/ui/apple-cards-carousel";
-// usell } from "@/hooks/use-outside-click";
+import HeroSection from "@/app/components/home/hero";
+import WhyNurikaSection from "@/app/components/home/innovation";
+import SolutionSection from "@/app/components/home/solution";
+import WebResultSection from "@/app/components/home/web-result";
 
 export const metadata: Metadata = {
-  title: "Home | Nuerika",
+  title: "Nurika Labs | AI & Deep-Tech Innovation Lab",
+  description:
+    "Build intelligent software, AI systems, and automation solutions. Nurika Labs architects the future for startups, enterprises, and innovators worldwide.",
 };
 
 export default function Home() {
   return (
-    <main>
-      {/* ---------------------Hero section Starts-----------------  */}
+    <main className="w-full overflow-hidden">
+      {/* Hero Section */}
       <HeroSection />
-      {/* ---------------------Hero section Ends-----------------  */}
 
-      {/* ---------------------Brand logo section Starts-----------------  */}
-      <Brand />
-      {/* ---------------------Brand logo section Ends-----------------  */}
+      {/* Why Nurika Labs Section */}
+      <WhyNurikaSection />
 
-      {/* ---------------------Web result section Starts-----------------  */}
-      <WebResult />
-      {/* ---------------------Web result section Ends-----------------  */}
+      {/* Solution Section */}
+      <SolutionSection />
 
-      {/* ---------------------Innovation section Starts-----------------  */}
-      <Innovation />
-      {/* ---------------------Innovation section Ends-----------------  */}
-
-      {/* ---------------------World map section Starts-----------------  */}
-     
-      
-      {/* ---------------------World map section Ends-----------------  */}
-
-      {/* ---------------------Online presence section Starts-----------------  */}
-      <OnlinePresence />
-      {/* ---------------------Online presence section Ends-----------------  */}
-
-      {/* ---------------------Creative mind section Starts-----------------  */}
-      <CreativeMind />
-      {/* ---------------------Creative mind section Ends-----------------  */}
-
-      {/* ---------------------Customer Stories section Starts-----------------  */}
-      <CustomerStories />
-      {/* ---------------------Customer Stories section Ends-----------------  */}
-
-      {/* ---------------------Subscription section Starts-----------------  */}
-      <Subscription />
-      {/* ---------------------Subscription section Ends-----------------  */}
-
-      {/* ---------------------Faq section Starts-----------------  */}
-      <Faq />
-      {/* ---------------------Faq section Ends-----------------  */}
-
-      {/* ---------------------Achievements section Starts-----------------  */}
-      <Achievements />
-      {/* ---------------------Achievements section Ends-----------------  */}
-
-      {/* ---------------------Solutions section Starts-----------------  */}
-      <Solutions />
-      {/* ---------------------Solutions section Ends-----------------  */}
+      {/* Web Result Section */}
+      <WebResultSection />
     </main>
   );
 }
